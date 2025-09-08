@@ -112,33 +112,3 @@ for i in range(1, 11):
     #plt.title()
 
 plt.show()
-
-
-## ----------------------------------------------------
-##  이미지 전처리 : RandomCrop 
-## ----------------------------------------------------
-# 변형 객체 생성
-crop_size = 60, 90
-aug=tf.Compose([tf.RandomCrop(crop_size),
-                tf.ToTensor()])
-
-for i in range(1, 11):
-    # 이미지 변형
-    img=aug(pil_img)
-
-    # 이미지 저장
-    tf.ToPILImage()(img).save(f"cat_02_crop_{i:02}.jpg")
-
-    # 변형 후 이미지 속성
-    displayInfo(img)
-
-    # Resize & Tensor 변형 후 비교
-    plt.subplot(2,5,i)
-    plt.imshow(img.permute(1,2,0))
-    #plt.title()
-
-plt.show()
-
-## ----------------------------------------------------
-##  이미지 전처리 : RandomHorizontalFlip / RandomVerticalFlip : 좌우/상한 뒤집기
-## ----------------------------------------------------
